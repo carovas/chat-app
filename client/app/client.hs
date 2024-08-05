@@ -63,13 +63,9 @@ No channel because it needs to stop when user type exit (defined in the upper fo
 receiveLoop :: Socket -> IO () 
 receiveLoop s = do
   msg <- recv s 1024 -- max size is 1024
-  if S.null msg == False
-  then do
-    putStr "Received from "
-    C.putStrLn msg
-    receiveLoop s
-  else
-    receiveLoop s
+  putStr "Received from "
+  C.putStrLn msg
+  receiveLoop s
 
 {-
 Run tcp client function from the example of the library
